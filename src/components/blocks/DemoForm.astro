@@ -1,0 +1,39 @@
+---
+import type { BlockComponentProps } from 'emdash/ui';
+import type { PageContentBlock } from '../../../emdash-env';
+type Props = BlockComponentProps<Extract<PageContentBlock, { _type: 'marketing_demo_form' }>>;
+const { value, blockKey } = Astro.props;
+const id = `enquiry-${blockKey}`;
+---
+<section id={value.anchor_id || undefined} class="section container enquiry">
+  <div><p class="eyebrow">ONE SMALL STEP</p><h2 class="section-headline">{value.headline}</h2><p>{value.intro}</p></div>
+  <form onsubmit="return false" class="demo-form" aria-label={value.headline}>
+    <label for={`${id}-name`}>Your name<input id={`${id}-name`}  autocomplete="given-name" required maxlength="100" /></label>
+    <label for={`${id}-email`}>Email address<input id={`${id}-email`}  type="email" autocomplete="email" required maxlength="254" /></label>
+    <label for={`${id}-message`}>A little about what brings you here<textarea id={`${id}-message`}  rows="4" required maxlength="2000"></textarea></label>
+    <label class="consent"><input type="checkbox" required /> <span>I understand this is a demo and nothing is sent. <a href="/privacy">Privacy details</a>.</span></label>
+    <button type="submit" class="btn btn-primary">{value.submit_label} <span aria-hidden="true">↗</span></button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+    <noscript>This demo needs JavaScript to show its confirmation. It cannot send a message.</noscript>
+  </form>
+</section>
+<script>
+  document.querySelectorAll<HTMLFormElement>('.demo-form').forEach(form => {
+    // Disable implicit transmission even without scripting: no named data is submitted.
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const status = form.querySelector<HTMLElement>('.form-status');
+      if (status) status.textContent = 'You’ve tried the first step. This was a demo — nothing was sent, saved, or booked.';
+      form.reset();
+    });
+  });
+</script>
+<style>
+.enquiry { display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,8vw,120px);scroll-margin-top:150px; }
+.enquiry p {margin-block-start:20px;max-width:44ch;color:var(--color-text-secondary)}
+.demo-form {display:grid;gap:22px}.demo-form label {display:grid;gap:9px;font-size:.9375rem;font-weight:500}
+input,textarea {font:inherit;color:var(--color-text);background:var(--color-surface);border:1px solid var(--color-border-strong);border-radius:4px;padding:14px;width:100%}textarea {resize:vertical}
+.demo-form .consent {display:flex;align-items:flex-start;font-size:.8125rem}.consent input {width:20px;height:20px;flex:none;margin-top:2px}.consent a {text-decoration:underline}.demo-form button {justify-self:start}.form-status {font-weight:500}
+@media(max-width:700px){.enquiry {grid-template-columns:1fr}}
+</style>

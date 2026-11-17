@@ -1,0 +1,16 @@
+# Gent Ford — Coaching for Men
+
+> Gentius Ford’s demonstration coaching website. This is a test site: no appointments, payments, or real form submissions are available. Credentials and client results are not claimed.
+
+## Pages
+- [Home](https://test2.gentford.com/): Introduction to coaching for men.
+- [About Gent](https://test2.gentford.com/about-gent): Gentius Ford’s coaching approach.
+- [Ready to Work](https://test2.gentford.com/ready-to-work): How the proposed work is structured and who it may suit.
+- [Your Challenges](https://test2.gentford.com/your-challenges): Direction, relationships, boundaries and transitions.
+- [The Power](https://test2.gentford.com/the-power): Notice, choose and act.
+- [Sign Up](https://test2.gentford.com/sign-up): Browser-only demo enquiry.
+- [Contact](https://test2.gentford.com/contact): Browser-only demo contact form.
+- [Terms](https://test2.gentford.com/terms): Demonstration website terms and limitations.
+- [Privacy](https://test2.gentford.com/privacy): Data handling for this test.
+
+Coaching is not therapy, clinical treatment, or crisis support. Content on canonical HTML pages is authoritative for this site; this file is an optional discovery aid.

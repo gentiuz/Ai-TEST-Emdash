@@ -1,0 +1,1734 @@
+{
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "meta": {
+    "name": "Gent Ford \u2014 Coaching for Men",
+    "description": "An editorial coaching site with independently editable CMS content and theme.",
+    "author": "Gent Ford"
+  },
+  "settings": {
+    "title": "GENT FORD",
+    "tagline": "Coaching for Men",
+    "seo": {
+      "titleSeparator": "|"
+    }
+  },
+  "blockTypes": [
+    {
+      "slug": "marketing_hero",
+      "label": "Hero",
+      "description": "A prominent page introduction with optional calls to action and media",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "required": true
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "text"
+            },
+            {
+              "slug": "primary_cta_label",
+              "label": "Primary button text",
+              "type": "string"
+            },
+            {
+              "slug": "primary_cta_url",
+              "label": "Primary button link (starts with /, https://, mailto:, tel: or #)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|(?:https?://|mailto:|tel:|/(?!/)|#).+)$"
+              }
+            },
+            {
+              "slug": "secondary_cta_label",
+              "label": "Secondary button text",
+              "type": "string"
+            },
+            {
+              "slug": "secondary_cta_url",
+              "label": "Secondary button link (starts with /, https://, mailto:, tel: or #)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|(?:https?://|mailto:|tel:|/(?!/)|#).+)$"
+              }
+            },
+            {
+              "slug": "image",
+              "label": "Image",
+              "type": "image"
+            },
+            {
+              "slug": "image_caption",
+              "label": "Image caption (shown on the photo)",
+              "type": "string"
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Announcement (shown above the headline)",
+              "type": "string"
+            },
+            {
+              "slug": "eyebrow_url",
+              "label": "Announcement link (starts with /, https://, mailto:, tel: or #)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|/(?!/|\\\\).*|(?:https?://|mailto:|tel:|#).+)$"
+              }
+            },
+            {
+              "slug": "centered",
+              "label": "Center the layout",
+              "type": "boolean",
+              "defaultValue": false
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_features",
+      "label": "Features",
+      "description": "A grid of product or service features",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "required": true
+            },
+            {
+              "slug": "subheadline",
+              "label": "Second sentence (shown muted after the headline)",
+              "type": "text"
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Label above headline",
+              "type": "string"
+            },
+            {
+              "slug": "features",
+              "label": "Features",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 12,
+                "subFields": [
+                  {
+                    "slug": "icon",
+                    "label": "Icon",
+                    "type": "select",
+                    "required": true,
+                    "options": [
+                      "zap",
+                      "shield",
+                      "users",
+                      "chart",
+                      "code",
+                      "globe",
+                      "heart",
+                      "star",
+                      "check",
+                      "lock",
+                      "clock",
+                      "cloud",
+                      "building",
+                      "leaf",
+                      "gauge",
+                      "thermometer",
+                      "plug",
+                      "bell",
+                      "file",
+                      "sun",
+                      "trend"
+                    ]
+                  },
+                  {
+                    "slug": "title",
+                    "label": "Title",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "description",
+                    "label": "Description (leave a blank line between paragraphs)",
+                    "type": "text",
+                    "required": true
+                  }
+                ]
+              }
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_testimonials",
+      "label": "Testimonials",
+      "description": "Customer quotes and attribution. The first quote is shown large",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Section label (small text above the quotes)",
+              "type": "string"
+            },
+            {
+              "slug": "testimonials",
+              "label": "Testimonials",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 12,
+                "subFields": [
+                  {
+                    "slug": "quote",
+                    "label": "Quote (leave a blank line between paragraphs)",
+                    "type": "text",
+                    "required": true
+                  },
+                  {
+                    "slug": "author",
+                    "label": "Author name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "role",
+                    "label": "Role or title",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "company",
+                    "label": "Company",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "avatar",
+                    "label": "Avatar (initials show when empty)",
+                    "type": "image"
+                  }
+                ]
+              }
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_pricing",
+      "label": "Pricing",
+      "description": "A comparison of up to three pricing plans",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string"
+            },
+            {
+              "slug": "plans",
+              "label": "Plans",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 3,
+                "subFields": [
+                  {
+                    "slug": "name",
+                    "label": "Plan name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "price",
+                    "label": "Price",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "period",
+                    "label": "Period",
+                    "type": "string"
+                  },
+                  {
+                    "slug": "description",
+                    "label": "Description (leave a blank line between paragraphs)",
+                    "type": "text"
+                  },
+                  {
+                    "slug": "features",
+                    "label": "Features (one per line)",
+                    "type": "text"
+                  },
+                  {
+                    "slug": "cta_label",
+                    "label": "Button text",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "cta_url",
+                    "label": "Button link (starts with /, https://, mailto:, tel: or #)",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "highlighted",
+                    "label": "Highlight this plan",
+                    "type": "boolean"
+                  },
+                  {
+                    "slug": "badge",
+                    "label": "Badge text, for example Most popular",
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_faq",
+      "label": "FAQ",
+      "description": "A list of frequently asked questions",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "text"
+            },
+            {
+              "slug": "items",
+              "label": "Questions",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 12,
+                "subFields": [
+                  {
+                    "slug": "question",
+                    "label": "Question",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "answer",
+                    "label": "Answer (leave a blank line between paragraphs)",
+                    "type": "text",
+                    "required": true
+                  }
+                ]
+              }
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_logos",
+      "label": "Logo wall",
+      "description": "A scrolling row of customer or partner logos. Names without a logo show as text",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Section label (small text above the logos)",
+              "type": "string"
+            },
+            {
+              "slug": "logos",
+              "label": "Logos",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 24,
+                "subFields": [
+                  {
+                    "slug": "name",
+                    "label": "Company name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "logo",
+                    "label": "Logo",
+                    "type": "image"
+                  }
+                ]
+              }
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_split",
+      "label": "Text and image",
+      "description": "A headline, copy and checklist beside a photo",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "required": true
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Label above headline",
+              "type": "string"
+            },
+            {
+              "slug": "body",
+              "label": "Body (leave a blank line between paragraphs)",
+              "type": "text"
+            },
+            {
+              "slug": "points",
+              "label": "Checklist (one item per line)",
+              "type": "text"
+            },
+            {
+              "slug": "cta_label",
+              "label": "Link text",
+              "type": "string"
+            },
+            {
+              "slug": "cta_url",
+              "label": "Link (starts with /, https://, mailto:, tel: or #)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|/(?!/|\\\\).*|(?:https?://|mailto:|tel:|#).+)$"
+              }
+            },
+            {
+              "slug": "image",
+              "label": "Image",
+              "type": "image"
+            },
+            {
+              "slug": "image_caption",
+              "label": "Image caption (shown on the photo)",
+              "type": "string"
+            },
+            {
+              "slug": "image_first",
+              "label": "Show the image first",
+              "type": "boolean",
+              "defaultValue": false
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_stats",
+      "label": "Stats",
+      "description": "Headline numbers on a dark panel",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Second sentence (shown muted after the headline)",
+              "type": "text"
+            },
+            {
+              "slug": "stats",
+              "label": "Stats",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 6,
+                "subFields": [
+                  {
+                    "slug": "value",
+                    "label": "Value",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "label",
+                    "label": "Label",
+                    "type": "string",
+                    "required": true
+                  }
+                ]
+              }
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_cta",
+      "label": "Call to action",
+      "description": "A closing call to action over a photo or dark panel",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string",
+              "required": true
+            },
+            {
+              "slug": "body",
+              "label": "Body (leave a blank line between paragraphs)",
+              "type": "text"
+            },
+            {
+              "slug": "primary_cta_label",
+              "label": "Primary button text",
+              "type": "string"
+            },
+            {
+              "slug": "primary_cta_url",
+              "label": "Primary button link (starts with /, https://, mailto:, tel: or #)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|/(?!/|\\\\).*|(?:https?://|mailto:|tel:|#).+)$"
+              }
+            },
+            {
+              "slug": "secondary_cta_label",
+              "label": "Secondary button text",
+              "type": "string"
+            },
+            {
+              "slug": "secondary_cta_url",
+              "label": "Secondary button link (starts with /, https://, mailto:, tel: or #)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|/(?!/|\\\\).*|(?:https?://|mailto:|tel:|#).+)$"
+              }
+            },
+            {
+              "slug": "image",
+              "label": "Background image",
+              "type": "image"
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_contact",
+      "label": "Contact options",
+      "description": "Cards that point readers to the right email address, phone number or page",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string"
+            },
+            {
+              "slug": "eyebrow",
+              "label": "Label above headline",
+              "type": "string"
+            },
+            {
+              "slug": "subheadline",
+              "label": "Subheadline",
+              "type": "text"
+            },
+            {
+              "slug": "options",
+              "label": "Contact options",
+              "type": "repeater",
+              "required": true,
+              "validation": {
+                "minItems": 1,
+                "maxItems": 6,
+                "subFields": [
+                  {
+                    "slug": "icon",
+                    "label": "Icon",
+                    "type": "select",
+                    "required": true,
+                    "options": [
+                      "email",
+                      "support",
+                      "sales",
+                      "phone",
+                      "chat",
+                      "location"
+                    ]
+                  },
+                  {
+                    "slug": "title",
+                    "label": "Title",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "description",
+                    "label": "Description (leave a blank line between paragraphs)",
+                    "type": "text"
+                  },
+                  {
+                    "slug": "link_label",
+                    "label": "Link text",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "slug": "link_url",
+                    "label": "Link (starts with /, https://, mailto:, tel: or #)",
+                    "type": "url",
+                    "required": true
+                  }
+                ]
+              }
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_text",
+      "label": "Text",
+      "description": "Long-form text with headings, lists and links, for pages like About or Privacy",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Headline",
+              "type": "string"
+            },
+            {
+              "slug": "body",
+              "label": "Body",
+              "type": "portableText",
+              "required": true
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Section ID (lowercase, for links like /#pricing)",
+              "type": "string",
+              "validation": {
+                "pattern": "^(?:$|[a-z][a-z0-9_-]*)$"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "marketing_demo_form",
+      "label": "Demo enquiry form",
+      "category": "Marketing",
+      "currentVersion": 1,
+      "versions": [
+        {
+          "version": 1,
+          "fields": [
+            {
+              "slug": "headline",
+              "label": "Heading",
+              "type": "string"
+            },
+            {
+              "slug": "intro",
+              "label": "Introduction",
+              "type": "text"
+            },
+            {
+              "slug": "submit_label",
+              "label": "Button label",
+              "type": "string"
+            },
+            {
+              "slug": "anchor_id",
+              "label": "Anchor ID",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "slug": "pages",
+      "label": "Pages",
+      "labelSingular": "Page",
+      "urlPattern": "/{slug}",
+      "supports": [
+        "drafts",
+        "revisions",
+        "preview",
+        "seo"
+      ],
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "content",
+          "label": "Content",
+          "type": "blocks",
+          "validation": {
+            "allowedTypes": [
+              "marketing_hero",
+              "marketing_features",
+              "marketing_testimonials",
+              "marketing_pricing",
+              "marketing_faq",
+              "marketing_logos",
+              "marketing_split",
+              "marketing_stats",
+              "marketing_cta",
+              "marketing_contact",
+              "marketing_text",
+              "marketing_demo_form"
+            ],
+            "maxItems": 20
+          }
+        }
+      ]
+    }
+  ],
+  "menus": [
+    {
+      "name": "primary",
+      "label": "Explore",
+      "items": [
+        {
+          "type": "custom",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "type": "custom",
+          "label": "About Gent",
+          "url": "/about-gent"
+        },
+        {
+          "type": "custom",
+          "label": "Ready to Work",
+          "url": "/ready-to-work"
+        },
+        {
+          "type": "custom",
+          "label": "Your Challenges",
+          "url": "/your-challenges"
+        },
+        {
+          "type": "custom",
+          "label": "The Power",
+          "url": "/the-power"
+        },
+        {
+          "type": "custom",
+          "label": "Contact",
+          "url": "/contact"
+        },
+        {
+          "type": "custom",
+          "label": "Sign Up",
+          "url": "/sign-up",
+          "cssClasses": "button"
+        }
+      ]
+    },
+    {
+      "name": "footer_product",
+      "label": "Find your way",
+      "items": [
+        {
+          "type": "custom",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "type": "custom",
+          "label": "About Gent",
+          "url": "/about-gent"
+        },
+        {
+          "type": "custom",
+          "label": "Ready to Work",
+          "url": "/ready-to-work"
+        },
+        {
+          "type": "custom",
+          "label": "Your Challenges",
+          "url": "/your-challenges"
+        }
+      ]
+    },
+    {
+      "name": "footer_company",
+      "label": "Take the next step",
+      "items": [
+        {
+          "type": "custom",
+          "label": "The Power",
+          "url": "/the-power"
+        },
+        {
+          "type": "custom",
+          "label": "Contact",
+          "url": "/contact"
+        },
+        {
+          "type": "custom",
+          "label": "Sign Up",
+          "url": "/sign-up",
+          "cssClasses": "button"
+        }
+      ]
+    },
+    {
+      "name": "footer_support",
+      "label": "The details",
+      "items": [
+        {
+          "type": "custom",
+          "label": "Terms & Conditions",
+          "url": "/terms"
+        },
+        {
+          "type": "custom",
+          "label": "Privacy",
+          "url": "/privacy"
+        }
+      ]
+    }
+  ],
+  "content": {
+    "pages": [
+      {
+        "id": "home",
+        "slug": "home",
+        "status": "published",
+        "data": {
+          "title": "Home",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "A good life.\nOn your terms.",
+              "subheadline": "You can be capable, dependable, and still feel a long way from yourself. Coaching for men who are ready to stop going through the motions.",
+              "eyebrow": "GENTIUS FORD \u00b7 COACHING FOR MEN",
+              "primary_cta_label": "Start a conversation",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "Explore the approach",
+              "secondary_cta_url": "/the-power",
+              "image": {
+                "id": "external",
+                "src": "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                "alt": "Illustrative stock portrait for the Gentius Ford test website"
+              },
+              "image_caption": "Gentius Ford \u00b7 A different kind of strength"
+            },
+            {
+              "_type": "marketing_features",
+              "_version": 1,
+              "_key": "features",
+              "headline": "Less proving. More living.",
+              "eyebrow": "THE WORK",
+              "features": [
+                {
+                  "icon": "globe",
+                  "title": "Find your direction",
+                  "description": "Get clear on what matters to you, beyond the expectations you have collected."
+                },
+                {
+                  "icon": "heart",
+                  "title": "Show up in your relationships",
+                  "description": "Have the conversations you keep rehearsing. Say what you mean. Listen without preparing your defence."
+                },
+                {
+                  "icon": "zap",
+                  "title": "Make your next move",
+                  "description": "Turn a useful insight into a decision, a boundary, or a practical next step."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_split",
+              "_version": 1,
+              "_key": "meet",
+              "headline": "You do not need another version of perfect.",
+              "eyebrow": "MEET GENT",
+              "body": "I\u2019m Gentius Ford. Call me Gent.\n\nThis is a place to put down the polished answer and talk about what is really happening. The aim is simple: a life that feels like yours, and the courage to live it.",
+              "cta_label": "A little about Gent",
+              "cta_url": "/about-gent",
+              "image": {
+                "id": "external",
+                "src": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85",
+                "alt": "Quiet lake beneath a mountain ridge"
+              },
+              "image_caption": "Space to think. Room to move.",
+              "image_first": true
+            },
+            {
+              "_type": "marketing_faq",
+              "_version": 1,
+              "_key": "faq",
+              "headline": "A few things worth knowing.",
+              "items": [
+                {
+                  "question": "What is men\u2019s coaching?",
+                  "answer": "A focused conversation that helps you clarify a challenge, explore your choices, and follow through on actions you choose. It is collaborative work, rather than someone telling you how to live."
+                },
+                {
+                  "question": "Do I need to know exactly what I want?",
+                  "answer": "No. Feeling stuck, restless, or pulled in several directions is enough of a starting point. We begin with what is happening now."
+                },
+                {
+                  "question": "Is coaching the same as therapy?",
+                  "answer": "No. Coaching focuses on goals, choices, and action. It does not diagnose or treat mental health conditions. If you need clinical support, a qualified healthcare professional is the right place to start."
+                },
+                {
+                  "question": "How do I get started?",
+                  "answer": "Use Sign Up to try the introductory enquiry flow. This is a test website: no appointment is booked and no details are sent."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "about-gent",
+        "slug": "about-gent",
+        "status": "published",
+        "data": {
+          "title": "About Gent",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "A real conversation.\nA clearer way forward.",
+              "subheadline": "Meet Gentius Ford \u2014 Gent, for short. A coaching approach built around honesty, curiosity, and practical change.",
+              "eyebrow": "GENTIUS FORD \u00b7 COACHING FOR MEN",
+              "primary_cta_label": "Start a conversation",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "Explore the approach",
+              "secondary_cta_url": "/the-power",
+              "image": {
+                "id": "external",
+                "src": "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                "alt": "Illustrative stock portrait for the Gentius Ford test website"
+              },
+              "image_caption": "Illustrative portrait \u00b7 test website"
+            },
+            {
+              "_type": "marketing_text",
+              "_version": 1,
+              "_key": "text",
+              "headline": "You can leave the armour at the door.",
+              "body": [
+                {
+                  "_type": "block",
+                  "_key": "0",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Being the man people rely on can leave very little space to ask what you need. Here, you get that space.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "1",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "The work is thoughtful, direct, and human. We look at the story you tell yourself, the patterns you repeat, and the choices you can make next.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "2",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "You stay in charge of your decisions. Coaching gives you questions, perspective, and accountability \u2014 never a script for who you should be.",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "marketing_features",
+              "_version": 1,
+              "_key": "features",
+              "headline": "What you can expect.",
+              "eyebrow": "THE WORK",
+              "features": [
+                {
+                  "icon": "heart",
+                  "title": "Respect",
+                  "description": "Your experience deserves attention, without a performance or a label."
+                },
+                {
+                  "icon": "globe",
+                  "title": "Perspective",
+                  "description": "Good questions make room for possibilities that are hard to see alone."
+                },
+                {
+                  "icon": "check",
+                  "title": "Practical next steps",
+                  "description": "The conversation matters. What you do with it matters too."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ready-to-work",
+        "slug": "ready-to-work",
+        "status": "published",
+        "data": {
+          "title": "Ready to Work",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "Ready does not\nmean certain.",
+              "subheadline": "You do not need a five-year plan. A willingness to look honestly at what is happening is a useful place to begin.",
+              "eyebrow": "GENTIUS FORD \u00b7 COACHING FOR MEN",
+              "primary_cta_label": "Start a conversation",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "Explore the approach",
+              "secondary_cta_url": "/the-power"
+            },
+            {
+              "_type": "marketing_features",
+              "_version": 1,
+              "_key": "features",
+              "headline": "A simple way into the work.",
+              "eyebrow": "THE WORK",
+              "features": [
+                {
+                  "icon": "heart",
+                  "title": "01 / Start honestly",
+                  "description": "Bring the thing you keep circling: a decision, a relationship, a sense that something needs to change."
+                },
+                {
+                  "icon": "globe",
+                  "title": "02 / Get specific",
+                  "description": "Explore what matters, what is getting in the way, and what is yours to influence."
+                },
+                {
+                  "icon": "check",
+                  "title": "03 / Take it into life",
+                  "description": "Choose a manageable action. Try it. Reflect on what happened and adjust."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_text",
+              "_version": 1,
+              "_key": "text",
+              "headline": "Is this a good fit?",
+              "body": [
+                {
+                  "_type": "block",
+                  "_key": "0",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Coaching may suit you if you want time to think, a candid conversation, and support turning reflection into action. You need to be willing to participate and make your own decisions.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "1",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "It is not crisis support, clinical treatment, or a promise of a particular result. Session format, fees, availability, and cancellation terms would be agreed before any paid work. This test site does not sell sessions.",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "your-challenges",
+        "slug": "your-challenges",
+        "status": "published",
+        "data": {
+          "title": "Your Challenges",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "Holding it together\nis not the whole story.",
+              "subheadline": "The outside can look fine while the inside feels noisy. You do not need to wait for a crisis to pay attention.",
+              "eyebrow": "GENTIUS FORD \u00b7 COACHING FOR MEN",
+              "primary_cta_label": "Start a conversation",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "Explore the approach",
+              "secondary_cta_url": "/the-power"
+            },
+            {
+              "_type": "marketing_features",
+              "_version": 1,
+              "_key": "features",
+              "headline": "Where do you recognise yourself?",
+              "eyebrow": "THE WORK",
+              "features": [
+                {
+                  "icon": "clock",
+                  "title": "Always on. Rarely present.",
+                  "description": "Work gets the best of you. The people you love get whatever is left. Explore the boundaries that would change that."
+                },
+                {
+                  "icon": "globe",
+                  "title": "Successful. Still searching.",
+                  "description": "You reached the goal. The satisfaction did not stay. Look again at what a meaningful next chapter could be."
+                },
+                {
+                  "icon": "heart",
+                  "title": "Close, but disconnected.",
+                  "description": "You want better relationships but keep falling into the same conversations. Start with what you can say and do differently."
+                },
+                {
+                  "icon": "zap",
+                  "title": "Stuck at the starting line.",
+                  "description": "You have thought it through a hundred times. Now work out which small decision would create movement."
+                },
+                {
+                  "icon": "shield",
+                  "title": "Carrying everyone else.",
+                  "description": "Being reliable is a strength. Having no room for your own needs is a cost worth examining."
+                },
+                {
+                  "icon": "sun",
+                  "title": "A life in transition.",
+                  "description": "A new role, a relationship change, or a different stage of life can unsettle your identity. Make room to choose what comes next."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_split",
+              "_version": 1,
+              "_key": "space",
+              "headline": "Start with the thing you almost did not mention.",
+              "body": "You do not have to arrive with the right words. A good starting point is often: \u201cI\u2019m not sure why this is bothering me so much.\u201d",
+              "image": {
+                "id": "external",
+                "src": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85",
+                "alt": "Quiet lake beneath a mountain ridge"
+              },
+              "cta_label": "Talk it through",
+              "cta_url": "/contact"
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "the-power",
+        "slug": "the-power",
+        "status": "published",
+        "data": {
+          "title": "The Power",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "Power, without\nthe performance.",
+              "subheadline": "Not louder. Not harder. More deliberate. The power to choose how you respond, what you commit to, and where you draw a line.",
+              "eyebrow": "GENTIUS FORD \u00b7 COACHING FOR MEN",
+              "primary_cta_label": "Start a conversation",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "Explore the approach",
+              "secondary_cta_url": "/the-power"
+            },
+            {
+              "_type": "marketing_text",
+              "_version": 1,
+              "_key": "text",
+              "headline": "The space between reaction and choice.",
+              "body": [
+                {
+                  "_type": "block",
+                  "_key": "0",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "A pattern can feel like a personality. \u201cThat\u2019s just how I am.\u201d Coaching makes room to question that conclusion.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "1",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Notice what happens. Name what matters. Choose what to try. Repeat. It is a simple rhythm, and it asks for attention rather than perfection.",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "marketing_features",
+              "_version": 1,
+              "_key": "features",
+              "headline": "Three practices. Real life.",
+              "eyebrow": "THE WORK",
+              "features": [
+                {
+                  "icon": "sun",
+                  "title": "Notice",
+                  "description": "Pay attention to what gives you energy, what drains it, and the moments you go on autopilot."
+                },
+                {
+                  "icon": "globe",
+                  "title": "Choose",
+                  "description": "Separate what you can influence from what you cannot. Make a decision that fits your values."
+                },
+                {
+                  "icon": "check",
+                  "title": "Act",
+                  "description": "Do something small enough to follow through on, then learn from the result."
+                }
+              ]
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "sign-up",
+        "slug": "sign-up",
+        "status": "published",
+        "data": {
+          "title": "Sign Up",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "Begin with\nwhat is real.",
+              "subheadline": "Try the introductory enquiry below. No need to write an essay. A sentence about what brings you here is plenty.",
+              "eyebrow": "TAKE THE FIRST STEP",
+              "primary_cta_label": "Try the enquiry",
+              "primary_cta_url": "#enquiry"
+            },
+            {
+              "_type": "marketing_demo_form",
+              "_version": 1,
+              "_key": "enquiry",
+              "headline": "What would you like to change?",
+              "intro": "Demo only. Your details stay in this page and are not sent or stored.",
+              "submit_label": "Try the first step",
+              "anchor_id": "enquiry"
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "contact",
+        "slug": "contact",
+        "status": "published",
+        "data": {
+          "title": "Contact",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "A question is\na good beginning.",
+              "subheadline": "Curious about coaching? Unsure where to start? Try the contact form below.",
+              "eyebrow": "LET\u2019S TALK",
+              "primary_cta_label": "Ask your question",
+              "primary_cta_url": "#enquiry"
+            },
+            {
+              "_type": "marketing_demo_form",
+              "_version": 1,
+              "_key": "enquiry",
+              "headline": "What is on your mind?",
+              "intro": "This is a demonstration form. Nothing you enter is sent or saved.",
+              "submit_label": "Try sending a message",
+              "anchor_id": "enquiry"
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "terms",
+        "slug": "terms",
+        "status": "published",
+        "data": {
+          "title": "Terms & Conditions",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "Clear terms.\nNo small-print surprises.",
+              "subheadline": "Terms for this demonstration website. No coaching services, subscriptions, or purchases are offered here.",
+              "eyebrow": "GENTIUS FORD \u00b7 COACHING FOR MEN",
+              "primary_cta_label": "Start a conversation",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "Explore the approach",
+              "secondary_cta_url": "/the-power"
+            },
+            {
+              "_type": "marketing_text",
+              "_version": 1,
+              "_key": "text",
+              "headline": "Using this test website",
+              "body": [
+                {
+                  "_type": "block",
+                  "_key": "0",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "This website demonstrates a proposed Gentius Ford coaching brand. Copy and imagery are illustrative. It does not establish a client relationship, book a session, or accept payment.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "1",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Demo forms process input only in your browser. They do not send or store submissions. Do not enter sensitive personal information.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "2",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Information here is general and is not medical, mental health, legal, or financial advice. Coaching is not a substitute for qualified professional care. In an emergency, contact local emergency services.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "3",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Photographs are stock imagery used to illustrate the concept. The portrait is not a verified photograph of Gentius Ford. No client testimonials, professional accreditations, or guaranteed outcomes are claimed.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "4",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Before offering real services, the operator must publish their legal business identity, contact details, governing law, fees, cancellation and refund terms, service agreement, and a complete privacy notice. These demonstration terms do not replace that agreement.",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      },
+      {
+        "id": "privacy",
+        "slug": "privacy",
+        "status": "published",
+        "data": {
+          "title": "Privacy",
+          "content": [
+            {
+              "_type": "marketing_hero",
+              "_version": 1,
+              "_key": "hero",
+              "headline": "Your information\ndeserves clarity.",
+              "subheadline": "A short explanation of what this test website does with information.",
+              "eyebrow": "GENTIUS FORD \u00b7 COACHING FOR MEN",
+              "primary_cta_label": "Start a conversation",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "Explore the approach",
+              "secondary_cta_url": "/the-power"
+            },
+            {
+              "_type": "marketing_text",
+              "_version": 1,
+              "_key": "text",
+              "headline": "Privacy on this demonstration",
+              "body": [
+                {
+                  "_type": "block",
+                  "_key": "0",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Sign Up and Contact are browser-only demonstrations. No enquiry is transmitted to a server, emailed, or saved by the forms.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "1",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "The theme selector saves your display preference in a first-party cookie. No advertising or analytics trackers are intentionally installed. Hosting providers may process technical request data to deliver and protect the site.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "2",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "The site may load illustrative photographs from Pexels or Unsplash. Those requests disclose technical information such as your IP address to the image host. Fonts are bundled and served by this site.",
+                      "marks": []
+                    }
+                  ]
+                },
+                {
+                  "_type": "block",
+                  "_key": "3",
+                  "style": "normal",
+                  "markDefs": [],
+                  "children": [
+                    {
+                      "_type": "span",
+                      "_key": "s",
+                      "text": "Before collecting real enquiries, the operator must provide controller contact details, purposes and legal basis, retention periods, processors, applicable rights, and a contact route for privacy requests.",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "_type": "marketing_cta",
+              "_version": 1,
+              "_key": "closing",
+              "headline": "Your next chapter starts with a conversation.",
+              "body": "No performance. No perfect answers. Just room to work out what comes next.",
+              "primary_cta_label": "Take the first step",
+              "primary_cta_url": "/sign-up",
+              "secondary_cta_label": "A question first?",
+              "secondary_cta_url": "/contact"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

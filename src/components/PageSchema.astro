@@ -1,0 +1,25 @@
+---
+import type { Page } from '../../emdash-env';
+interface Props { page: { data: Page; id: string } }
+const { page } = Astro.props;
+const origin = 'https://test2.gentford.com';
+const path = page.id === 'home' ? '/' : `/${page.id}`;
+const url = `${origin}${path}`;
+const blocks = page.data.content ?? [];
+const hero = blocks.find(b => b._type === 'marketing_hero');
+const faq = blocks.filter(b => b._type === 'marketing_faq');
+const graph: Record<string, unknown>[] = [{
+  '@type': 'WebPage', '@id': `${url}#webpage`, url, name: page.data.title === 'Home' ? 'Gent Ford — Coaching for Men' : page.data.title,
+  description: hero?.subheadline,
+  isPartOf: { '@id': `${origin}/#website` }, inLanguage: 'en',
+}];
+if (page.id !== 'home') graph.push({ '@type': 'BreadcrumbList', itemListElement: [
+  { '@type':'ListItem',position:1,name:'Home',item:origin+'/' },
+  { '@type':'ListItem',position:2,name:page.data.title,item:url }
+] });
+for (const block of faq) graph.push({ '@type':'FAQPage', '@id':`${url}#faq`, mainEntity:block.items.map(item => ({ '@type':'Question',name:item.question,acceptedAnswer:{'@type':'Answer',text:item.answer} })) });
+if (page.id === 'home' || page.id === 'about-gent') graph.push({ '@type':'Person','@id':`${origin}/#gent`,name:'Gentius Ford',alternateName:'Gent Ford',url:`${origin}/about-gent`,jobTitle:'Men’s coach' });
+if (page.id === 'ready-to-work') graph.push({ '@type':'Service',name:'Coaching for men',serviceType:'Personal coaching',provider:{'@id':`${origin}/#gent`},url,description:hero?.subheadline });
+const json = JSON.stringify({ '@context':'https://schema.org', '@graph':graph }).replace(/</g,'\\u003c');
+---
+<script type="application/ld+json" set:html={json} />
