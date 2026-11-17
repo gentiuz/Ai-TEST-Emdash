@@ -21,7 +21,7 @@ interface Props {
 }
 
 const { title, pageTitle, description, canonical, robots, content } = Astro.props;
-const image = Astro.props.image || "https://test2.gentford.com/og-gent-ford.jpg";
+const image = Astro.props.image || new URL("/og-gent-ford.jpg", Astro.url.origin).href;
 const [settingsResult, menuResult, footerProductResult, footerCompanyResult, footerSupportResult] =
 	await Promise.all([
 		getSiteSettingsWithCacheHint(),

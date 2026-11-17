@@ -2,7 +2,7 @@
 import type { Page } from '../../emdash-env';
 interface Props { page: { data: Page; id: string } }
 const { page } = Astro.props;
-const origin = 'https://test2.gentford.com';
+const origin = Astro.url.origin;
 const path = page.id === 'home' ? '/' : `/${page.id}`;
 const url = `${origin}${path}`;
 const blocks = page.data.content ?? [];

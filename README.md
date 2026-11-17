@@ -1,6 +1,6 @@
 # Gent Ford — Coaching for Men
 
-EmDash 1.5, Astro 7, Cloudflare Workers + D1 + R2. Worker: `gentford-2`. Intended domain: `test2.gentford.com`.
+EmDash 1.5, Astro 7, Cloudflare Workers + D1 + R2. Worker: `gentford-2`. Deployment uses the account’s `workers.dev` address; no custom domain is attached.
 
 ## Develop
 
@@ -35,9 +35,9 @@ Browser tests expect a running local server with seeded content and Chromium at 
 
 ## Deploy
 
-1. Authenticate Wrangler using a securely configured Cloudflare API token. It needs Workers Scripts edit, D1 edit, R2 edit, and permissions for Workers custom domains on the `gentford.com` zone. Set `CLOUDFLARE_ACCOUNT_ID` if the token can access multiple accounts.
-2. `npm run deploy` builds and deploys only `gentford-2`. Wrangler can provision the named D1 and R2 resources from `wrangler.jsonc`; retain any resulting IDs in config. Ensure R2 is enabled and `gentford.com` is in this Cloudflare account. Do not modify existing Gent Ford Workers.
-3. Open `https://test2.gentford.com/_emdash/admin/setup`, create the real owner account with a passkey, and **include sample content** to load the coaching pages. Do not publish an unclaimed setup wizard publicly: complete owner setup promptly and restrict access while setting it up.
+1. Authenticate Wrangler using a securely configured Cloudflare API token. It needs Workers Scripts edit, D1 edit, R2 edit,. Set `CLOUDFLARE_ACCOUNT_ID` if the token can access multiple accounts.
+2. `npm run deploy` builds and deploys only `gentford-2`. Wrangler can provision the named D1 and R2 resources from `wrangler.jsonc`; retain any resulting IDs in config. Ensure R2 is enabled in the selected Cloudflare account. Do not modify existing Gent Ford Workers.
+3. Open `/_emdash/admin/setup` on the deployed `workers.dev` address, create the real owner account with a passkey, and **include sample content** to load the coaching pages. Do not publish an unclaimed setup wizard publicly: complete owner setup promptly and restrict access while setting it up.
 4. Check each page, sitemap, forms, image loading, and sign-in over HTTPS.
 
 A manual GitHub Actions workflow is included. Add repository/environment secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, then run **Deploy Gent Ford 2**. Cloud environment secret bindings are separate from GitHub Actions secrets. No automatic deployment on push is enabled.

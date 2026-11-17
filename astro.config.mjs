@@ -6,7 +6,6 @@ import { defineConfig } from "astro/config";
 import emdash from "emdash/astro";
 
 export default defineConfig({
-	site: "https://test2.gentford.com",
 	output: "server",
 	adapter: cloudflare(),
 	image: {
